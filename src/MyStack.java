@@ -1,38 +1,40 @@
 
-public class MyStack<T> extends MyLinkedList{
+public class MyStack<T> {
+
+    MyLinkedList<T> newStack;
 
 
     public MyStack() {
-        super();
+        this.newStack = new MyLinkedList<T>();
     }
 
     public void push(T insert) {
-        addLast(insert);
+        newStack.add(insert);
     }
-
-    public T pop() {
-        int size = getSize();
-
-        LinkNode prevNode = search(size - 1);
-        LinkNode nextNode = prevNode.nextNode;
-
-        if(size == 0) {
-            System.out.println("존재하지 않음");
-            return null;
-        }
-        setTail(prevNode);
-        prevNode.nextNode = null;
-        prevNode.data = null;
-        T removed = (T)getTail().data;
-
-        return removed;
-    }
+//
+//    public T pop() {
+//        int size = getSize();
+//
+//        LinkNode prevNode = search(size - 1);
+//        LinkNode nextNode = prevNode.nextNode;
+//
+//        if(size == 0) {
+//            System.out.println("존재하지 않음");
+//            return null;
+//        }
+//        setTail(prevNode);
+//        prevNode.nextNode = null;
+//        prevNode.data = null;
+//        T removed = (T)getTail().data;
+//
+//        return removed;
+//    }
 
     @Override
     public String toString() {
         return "MyStack{" +
-                ", tail=" + getTail() +
-                ", size=" + getSize() +
+                ", tail=" + newStack.getTail() +
+                ", size=" + newStack.getSize() +
                 '}';
     }
 

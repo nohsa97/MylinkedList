@@ -1,6 +1,5 @@
 import java.util.Iterator;
 import java.util.function.Consumer;
-import java.util.*;
 
 public class MyLinkedList<T> implements Iterator {
 
@@ -212,9 +211,12 @@ public class MyLinkedList<T> implements Iterator {
         return null;
     }
 
-
-    @Override
-    public void forEachRemaining(Consumer action) {
-        Iterator.super.forEachRemaining(action);
+    public void forEach(Consumer<? super T> action) {
+        LinkNode<T> current = head;
+        while (current != null) {
+            action.accept(current.data);
+            current = current.nextNode;
+        }
     }
+
 }
